@@ -1,14 +1,22 @@
-<!DOCTYPE html>
-<html>
-<head>
+@extends('layouts.app')
+
+@section('content')
+
+<div class="container pt-5">
+    <form action="/action_page.php">
+        <div class="row form-group">
+            <div class="col-sm-6 col-xs-12">
+                <label for="guest">Guest Name</label>
+                <input type="text" id="guest" class="form-control" placeholder="Input Guest name....">
+            </div>
+            <div class="col-sm-6 col-xs-12">
+                <label for="address">Address</label>
+                <input type="text" id="address" class="form-control" placeholder="Address....">
+            </div>
+        </div>
+        <button type="button" class="btn btn-info">Save</button>
+        <button type="button" class="btn btn-secondary">Upload</button>
+    </form>
+</div>
     
-    @vite( ['resources/css/app.css' ])
-    @vite( ['resources/sass/app.scss'])
-
-
-</head>
-<body>
-    <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Suscipit maiores, molestiae consequatur ab tempora perferendis optio, hic voluptates id quo repellendus illum repudiandae nulla at nisi earum repellat aperiam reprehenderit.</p>
-    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ad quis qui eum provident quas officia, porro laboriosam labore debitis architecto facere saepe quo et iusto pariatur nemo asperiores dicta aliquam.</p>
-</body>
-</html>
+@endsection
