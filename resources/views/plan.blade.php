@@ -1,13 +1,8 @@
-<!DOCTYPE html>
-<html>
-<head>
-    
-    @vite( ['resources/css/app.css' ])
-    @vite( ['resources/sass/app.scss'])
+@extends('layouts.app')
 
+@vite( ['resources/css/app.css' ])
 
-</head>
-<body>
+@section('content')
     <div class="container-fluid">
         <div class="row">
             <div class="col-sm-4 col-xs-12">
@@ -82,5 +77,4 @@
             </div>
        </div>
     </div>
-</body>
-</html>
+@endsection
