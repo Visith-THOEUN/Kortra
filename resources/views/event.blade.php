@@ -11,6 +11,7 @@
             <div class="col-sm-6 col-xs-12">
                 <label for="location">Event Code</label>
                 <input type="text" id="event_code" class="form-control" placeholder="Event code...">
+                
             </div>
         </div>
         <div class="row form-group">
