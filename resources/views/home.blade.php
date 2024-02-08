@@ -13,42 +13,42 @@
         </ol>
         <div class="carousel-inner">
             <div class="carousel-item active">
-                <img src="https://bitly.ws/3aJF2" class="d-block w-100" alt="...">
+                <img src="{{ asset('storage/image/image06.jpg') }}" class="d-block w-100" alt="Image">
                 <div class="carousel-caption d-none d-md-block">
-                    <h5>First slide label</h5>
+                    <h5>First slide label</h5>  
                     <p>Some representative placeholder content for the first slide.</p>
                 </div>
             </div>
             <div class="carousel-item">
-                <img src="https://bitly.ws/3aJDE" class="d-block w-100" alt="...">
+                <img src="{{ asset('storage/image/image05.jpg') }}" class="d-block w-100" alt="Image">
                 <div class="carousel-caption d-none d-md-block">
                     <h5>Second slide label</h5>
                     <p>Some representative placeholder content for the second slide.</p>
                 </div>
             </div>
             <div class="carousel-item">
-                <img src="https://bitly.ws/3aJE4" class="d-block w-100" alt="...">
+                <img src="{{ asset('storage/image/image04.jpg') }}" class="d-block w-100" alt="Image">
                 <div class="carousel-caption d-none d-md-block">
                     <h5>Third slide label</h5>
                     <p>Some representative placeholder content for the third slide.</p>
                 </div>
             </div>
             <div class="carousel-item">
-                <img src="https://bitly.ws/3aJGE" class="d-block w-100" alt="...">
+                <img src="{{ asset('storage/image/image03.jpg') }}" class="d-block w-100" alt="Image">
                 <div class="carousel-caption d-none d-md-block">
                     <h5>Fourth slide label</h5>
                     <p>Some representative placeholder content for the third slide.</p>
                 </div>
             </div>
             <div class="carousel-item">
-                <img src="https://bitly.ws/3aJHr" class="d-block w-100" alt="...">
+                <img src="{{ asset('storage/image/image02.jpg') }}" class="d-block w-100" alt="Image">
                 <div class="carousel-caption d-none d-md-block">
                     <h5>Fifth slide label</h5>
                     <p>Some representative placeholder content for the third slide.</p>
                 </div>
             </div>
             <div class="carousel-item">
-                <img src="https://bitly.ws/3aJHJ" class="d-block w-100" alt="...">
+                <img src="{{ asset('storage/image/image01.jpg') }}" class="d-block w-100" alt="Image">
                 <div class="carousel-caption d-none d-md-block">
                     <h5>Sixth slide label</h5>
                     <p>Some representative placeholder content for the third slide.</p>

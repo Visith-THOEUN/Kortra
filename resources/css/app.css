@@ -42,5 +42,12 @@ input[type=text], select {
   border-radius: 2px;
   background-color: rgb(255, 236, 127);
   margin: 15px 15px 15px 15px;
-
+  }
+  .image{
+    width: 100%;
+    height: 200px;
+  }
+  .slide-image{
+    width: 100%;
+    height: 100%;
   }
