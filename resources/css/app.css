@@ -51,6 +51,3 @@ input[type=text], select {
     width: 100%;
     height: 100%;
   }
-  .bg-writer{
-    background-image: url="{{ asset('storage/image/image06.jpg') }}";
-  }
