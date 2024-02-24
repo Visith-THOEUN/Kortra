@@ -15,6 +15,7 @@
             </div>
         </div>
         <button type="button" class="btn btn-info">Save</button>
+        <button type="button" class="btn btn-primary">Edit</button>
         <button type="button" class="btn btn-secondary">Upload</button>
     </form>
 </div>
