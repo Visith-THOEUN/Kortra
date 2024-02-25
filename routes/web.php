@@ -45,7 +45,6 @@ Route::get('/guest', [App\Http\Controllers\GuestController::class, 'index'])->na
 
 Route::get('/wirte', [App\Http\Controllers\WriteController::class, 'index'])->name('write');
 
-
 Route::get('/user', [App\Http\Controllers\UserController::class, 'index'])->name('user');
 
 Auth::routes();
