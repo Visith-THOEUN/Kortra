@@ -23,11 +23,12 @@
                     </p>
                 </div>
                 <div>
+                    <a class="btn btn-default" href="{{ url()->previous() }}">
+                        Back
+                    </a>
                     <input class="btn btn-primary" type="submit" value="Save">
                 </div>
             </form>
-
-
         </div>
     </div>
 @endsection
