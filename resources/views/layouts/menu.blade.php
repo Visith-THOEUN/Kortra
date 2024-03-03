@@ -31,16 +31,17 @@
     </a>
 </li>
 <li class="nav-item">
-    <a href="{{ route('user') }}" class="nav-link {{ Request::is('admin/user') ? 'active' : '' }}">
+    <a href="{{ route('users.index') }}"
+        class="nav-link {{ Request::is('admin/users') || Request::is('admin/users/*') ? 'active' : '' }}">
         <i class="fas fa-users"></i>
         <p>User</p>
     </a>
 </li>
 
 <li class="nav-item">
-    <a href="{{ route('groups.index') }}" class="nav-link {{ Request::is('admin/groups') || Request::is('admin/groups/*') ? 'active' : '' }}">
-    <i class="fas fa-user-friends"></i>
-    <p>Groups</p>
+    <a href="{{ route('groups.index') }}"
+        class="nav-link {{ Request::is('admin/groups') || Request::is('admin/groups/*') ? 'active' : '' }}">
+        <i class="fas fa-user-friends"></i>
+        <p>Groups</p>
     </a>
 </li>
-
