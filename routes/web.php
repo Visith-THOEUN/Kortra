@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\GroupController;
+use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -24,7 +25,7 @@ Route::middleware('auth')->prefix('admin')->group(function () {
     Route::get('/plan', [App\Http\Controllers\PlanController::class, 'index'])->name('plan');
     Route::get('/guest', [App\Http\Controllers\GuestController::class, 'index'])->name('guest');
     Route::get('/wirte', [App\Http\Controllers\WriteController::class, 'index'])->name('write');
-    Route::get('/user', [App\Http\Controllers\UserController::class, 'index'])->name('user');
+    Route::resource('/users', UserController::class);
     Route::resource('groups', GroupController::class);
 })->middleware('auth');
 
