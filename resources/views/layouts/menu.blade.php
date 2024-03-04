@@ -6,7 +6,8 @@
     </a>
 </li>
 <li class="nav-item">
-    <a href="{{ route('event') }}" class="nav-link {{ Request::is('admin/event') ? 'active' : '' }}">
+    <a href="{{ route('events.index') }}"
+        class="nav-link {{ Request::is('admin/events') || Request::is('admin/events/*') ? 'active' : '' }}">
         <i class="fas fa-calendar-week"></i>
         <p>Event</p>
     </a>
