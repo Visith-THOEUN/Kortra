@@ -5,8 +5,6 @@ namespace App\Http\Requests;
 use Gate;
 use Illuminate\Foundation\Http\FormRequest;
 use Symfony\Component\HttpFoundation\Response;
-use Illuminate\Validation\Rule;
-
 
 class UpdateUserRequest extends FormRequest
 {
@@ -16,6 +14,7 @@ class UpdateUserRequest extends FormRequest
     public function authorize(): bool
     {
         abort_if(Gate::denies('user.edit'), Response::HTTP_FORBIDDEN, '403 Forbidden');
+
         return true;
     }
 
@@ -30,7 +29,7 @@ class UpdateUserRequest extends FormRequest
             'name' => ['required'],
             'email' => ['required', 'unique:users,id'],
             'password' => ['required', 'min:8'],
-            'group_id' => ['sometimes', 'nullable']
+            'group_id' => ['sometimes', 'nullable'],
         ];
     }
 }

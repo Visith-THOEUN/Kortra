@@ -14,6 +14,7 @@ class StoreEventRequest extends FormRequest
     public function authorize(): bool
     {
         abort_if(Gate::denies('event.create'), Response::HTTP_FORBIDDEN, '403 Forbidden');
+
         return true;
     }
 
@@ -28,7 +29,7 @@ class StoreEventRequest extends FormRequest
             'name' => ['required'],
             'detail' => ['required'],
             'group_id' => ['required'],
-            'event_date' => ['required']
+            'event_date' => ['required'],
         ];
     }
 }

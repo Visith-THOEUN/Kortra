@@ -2,11 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
-use App\Models\User;
-use App\Models\Group;
 use App\Http\Requests\StoreUserRequest;
 use App\Http\Requests\UpdateUserRequest;
+use App\Models\Group;
+use App\Models\User;
 use Illuminate\Support\Facades\Hash;
 
 class UserController extends Controller
@@ -17,6 +16,7 @@ class UserController extends Controller
     public function index()
     {
         $users = User::paginate(10);
+
         return view('users.index', ['users' => $users]);
     }
 
@@ -26,6 +26,7 @@ class UserController extends Controller
     public function create()
     {
         $groups = Group::all()->pluck('name', 'id')->prepend('Please select group', '');
+
         return view('users.create', ['groups' => $groups]);
     }
 
@@ -37,6 +38,7 @@ class UserController extends Controller
         $request->password = Hash::make($request->password);
         $user = User::create($request->all());
         $user->assignRole('user');
+
         return redirect()->route('users.index');
     }
 
@@ -46,6 +48,7 @@ class UserController extends Controller
     public function show(string $id)
     {
         $user = User::where('id', $id)->first();
+
         return view('users.show', ['user' => $user]);
     }
 
@@ -56,6 +59,7 @@ class UserController extends Controller
     {
         $user = User::where('id', $id)->first();
         $groups = Group::all()->pluck('name', 'id')->prepend('Please select group');
+
         return view('users.edit', ['user' => $user, 'groups' => $groups]);
     }
 
@@ -66,6 +70,7 @@ class UserController extends Controller
     {
         $request->password = Hash::make($request->password);
         User::where('id', $id)->update($request->validated());
+
         return redirect()->route('users.index');
     }
 
@@ -75,6 +80,7 @@ class UserController extends Controller
     public function destroy(string $id)
     {
         User::where('id', $id)->delete();
+
         return back();
     }
 }
