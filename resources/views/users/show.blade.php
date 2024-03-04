@@ -39,7 +39,11 @@
                                 Group
                             </th>
                             <td>
-                                {{ $user->group->name ?? '' }}
+                                @if($user->group)
+                                    <a href="{{ route('groups.show', [$user->group->id]) }}">
+                                        {{ $user->group->name }}
+                                    </a>
+                                @endif
                             </td>
                         </tr>
                     </tbody>
