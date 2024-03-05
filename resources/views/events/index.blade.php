@@ -87,6 +87,10 @@
                                         </form>
                                     @endcan
 
+                                    @can('guest.create')
+                                            <a href="{{ route('guests.create', $event->id) }}" class="btn btn-xs btn-info">Add guest</a>
+                                    @endcan
+
                                 </td>
 
                             </tr>

@@ -42,6 +42,12 @@
                             </a>
                         </th>
                     </tr>
+                    <tr>
+                        <th>Guests</th>
+                        <th>
+                            <a href="{{ route('guests.index', [$event->id]) }}">View guests</a>
+                        </th>
+                    </tr>
                     </tbody>
                 </table>
                 <a style="margin-top:20px;" class="btn btn-default" href="{{ url()->previous() }}">
