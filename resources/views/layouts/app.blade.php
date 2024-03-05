@@ -57,10 +57,10 @@
 
             <!-- Main Footer -->
             <footer class="main-footer">
-                <div class="float-right d-none d-sm-block">
-                    <b>Version</b> 3.1.0
-                </div>
-                <strong>Copyright &copy; 2014-2023 <a href="https://adminlte.io">AdminLTE.io</a>.</strong> All rights
+{{--                <div class="float-right d-none d-sm-block">--}}
+{{--                    Kortra--}}
+{{--                </div>--}}
+                <strong>Copyright &copy; 2013-2024 <a href="#">Kortra</a>.</strong> All rights
                 reserved.
             </footer>
         </div>
