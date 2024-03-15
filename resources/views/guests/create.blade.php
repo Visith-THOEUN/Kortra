@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-    <div class="card">
+    <div class="container card">
         <div class="card-header">
             <p>
                 <b>{{ $event->name  }} on {{ $event->event_date }}</b>
