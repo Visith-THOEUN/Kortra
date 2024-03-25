@@ -18,17 +18,30 @@ class UserSeeder extends Seeder
         $manage_users = [
             'user.create',
             'user.edit',
-            'user.read',
+            'user.index',
+            'user.show',
             'user.delete',
         ];
         foreach ($manage_users as $user_perm) {
             Permission::create(['name' => $user_perm]);
         }
 
+        $manage_groups = [
+            'group.create',
+            'group.edit',
+            'group.index',
+            'group.show',
+            'group.delete',
+        ];
+        foreach ($manage_groups as $group_perm) {
+            Permission::create(['name' => $group_perm]);
+        }
+
         $manage_events = [
             'event.create',
             'event.edit',
-            'event.read',
+            'event.index',
+            'event.show',
             'event.delete',
         ];
 
@@ -37,21 +50,23 @@ class UserSeeder extends Seeder
         }
 
         $manage_guests = [
-            "guest.create",
-            "guest.edit",
-            "guest.read",
-            "guest.delete"
+            'guest.create',
+            'guest.edit',
+            'guest.index',
+            'guest.show',
+            'guest.delete',
         ];
-        foreach($manage_guests as $guest_perm) {
-            Permission::create(["name" => $guest_perm]);
+        foreach ($manage_guests as $guest_perm) {
+            Permission::create(['name' => $guest_perm]);
         }
 
         $role_admin = Role::create(['name' => 'admin']);
         $role_admin->givePermissionTo($manage_users);
         $role_admin->givePermissionTo($manage_events);
         $role_admin->givePermissionTo($manage_guests);
+        $role_admin->givePermissionTo($manage_groups);
 
-        $role_user = Role::create(["name" => "user"]);
+        $role_user = Role::create(['name' => 'user']);
         $role_user->givePermissionTo($manage_guests);
 
         $admin = User::create([
