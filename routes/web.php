@@ -25,8 +25,8 @@ Route::get('/', function () {
 Route::middleware('auth')->prefix('admin')->group(function () {
     Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
     Route::resource('/events', EventController::class);
-    Route::resource('/users', UserController::class);
-    Route::resource('groups', GroupController::class);
+    Route::resource('/users', UserController::class)->middleware(['role:admin']);
+    Route::resource('groups', GroupController::class)->middleware(['role:admin']);
     Route::resource('/events/{event_id}/guests', GuestController::class);
 })->middleware('auth');
 

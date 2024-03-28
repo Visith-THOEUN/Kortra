@@ -21,6 +21,7 @@
 {{--    </a>--}}
 {{--</li>--}}
 
+@role('admin')
 <li class="nav-item">
     <a href="{{ route('users.index') }}"
         class="nav-link {{ Request::is('admin/users') || Request::is('admin/users/*') ? 'active' : '' }}">
@@ -28,7 +29,9 @@
         <p>User</p>
     </a>
 </li>
+@endrole
 
+@role('admin')
 <li class="nav-item">
     <a href="{{ route('groups.index') }}"
         class="nav-link {{ Request::is('admin/groups') || Request::is('admin/groups/*') ? 'active' : '' }}">
@@ -36,3 +39,4 @@
         <p>Groups</p>
     </a>
 </li>
+@endrole
