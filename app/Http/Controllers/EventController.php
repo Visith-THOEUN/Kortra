@@ -16,9 +16,14 @@ class EventController extends Controller
      */
     public function index()
     {
-        $events = Event::withCount('guests')->paginate(10);
+        if (auth()->user()->hasRole('admin')) {
+            $events = Event::withCount('guests')->paginate(10);
+            return view('events.index', ['events' => $events]);
+        }
 
+        $events = Event::where('group_id', auth()->user()->group_id)->withCount('guests')->paginate(10);
         return view('events.index', ['events' => $events]);
+
     }
 
     /**
