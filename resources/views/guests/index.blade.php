@@ -3,10 +3,13 @@
 @section('content')
     @can('guest.create')
         <div style="margin-bottom: 10px;" class="row">
-            <div class="col-lg-12">
+            <div class="col-10">
                 <a class="btn btn-success" href="{{ route('guests.create', $event->id) }}">
                     Create guest
                 </a>
+            </div>
+            <div class="col-2">
+                <a href="{{ route('guests.export', $event->id) }}" class="btn btn-primary">Export as Excel</a>
             </div>
         </div>
     @endcan

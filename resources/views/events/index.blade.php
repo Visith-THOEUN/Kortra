@@ -36,6 +36,9 @@
                                 Date
                             </th>
                             <th>
+                                No Guests
+                            </th>
+                            <th>
                                 Group
                             </th>
                             <th>
@@ -60,6 +63,9 @@
                                 </td>
                                 <td>
                                     {{ $event->event_date ?? '' }}
+                                </td>
+                                <td>
+                                    {{ $event->guests_count }}
                                 </td>
                                 <td>
                                     {{ $event->group->name ?? '' }}

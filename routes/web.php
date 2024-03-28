@@ -18,15 +18,17 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+//    return view('welcome');
+    return redirect()->route('home');
 });
 
 Route::middleware('auth')->prefix('admin')->group(function () {
     Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
     Route::resource('/events', EventController::class);
-    Route::resource('/users', UserController::class);
-    Route::resource('groups', GroupController::class);
+    Route::resource('/users', UserController::class)->middleware(['role:admin']);
+    Route::resource('groups', GroupController::class)->middleware(['role:admin']);
     Route::resource('/events/{event_id}/guests', GuestController::class);
+    Route::get('/events/{event_id}/guests.xlsx', [GuestController::class, 'export'])->name('guests.export');
 })->middleware('auth');
 
 Auth::routes(['register' => false]);
