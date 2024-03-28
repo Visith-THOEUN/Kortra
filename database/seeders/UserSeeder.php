@@ -68,6 +68,7 @@ class UserSeeder extends Seeder
 
         $role_user = Role::create(['name' => 'user']);
         $role_user->givePermissionTo($manage_guests);
+        $role_user->givePermissionTo($manage_events[3]);
 
         $admin = User::create([
             'name' => 'Admin User',
