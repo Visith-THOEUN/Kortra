@@ -2,10 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Support\Facades\Gate;
 use App\Http\Requests\StoreEventRequest;
 use App\Http\Requests\UpdateEventRequest;
 use App\Models\Event;
 use App\Models\Group;
+use Symfony\Component\HttpFoundation\Response;
 
 class EventController extends Controller
 {
@@ -24,6 +26,7 @@ class EventController extends Controller
      */
     public function create()
     {
+        abort_if(Gate::denies('event.create'), Response::HTTP_FORBIDDEN, '403 Forbidden');
         $groups = Group::all()->pluck('name', 'id')->prepend('Please select group', '');
 
         return view('events.create', ['groups' => $groups]);
@@ -54,6 +57,7 @@ class EventController extends Controller
      */
     public function edit(string $id)
     {
+        abort_if(Gate::denies('event.edit'), Response::HTTP_FORBIDDEN, '403 Forbidden');
         $event = Event::where('id', $id)->first();
         $groups = Group::all()->pluck('name', 'id')->prepend('Please select group', '');
 
@@ -75,6 +79,7 @@ class EventController extends Controller
      */
     public function destroy(string $id)
     {
+        abort_if(Gate::denies('event.delete'), Response::HTTP_FORBIDDEN, '403 Forbidden');
         Event::where('id', $id)->delete();
 
         return redirect()->route('events.index');
