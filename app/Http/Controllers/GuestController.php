@@ -2,11 +2,14 @@
 
 namespace App\Http\Controllers;
 
+use App\Exports\GuestsExport;
 use App\Http\Requests\StoreGuestRequest;
 use App\Http\Requests\UpdateGuestRequest;
 use App\Models\Event;
 use App\Models\Guest;
+use Maatwebsite\Excel\Facades\Excel;
 
+# TODO: add authorization to prevent direct access
 class GuestController extends Controller
 {
     /**
@@ -79,5 +82,10 @@ class GuestController extends Controller
         Guest::where('id', $id)->delete();
 
         return redirect()->route('guests.index', $event_id);
+    }
+
+    public function export(int $event_id)
+    {
+        return Excel::download(new GuestsExport($event_id), 'guests.xlsx');
     }
 }

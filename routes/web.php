@@ -28,6 +28,7 @@ Route::middleware('auth')->prefix('admin')->group(function () {
     Route::resource('/users', UserController::class)->middleware(['role:admin']);
     Route::resource('groups', GroupController::class)->middleware(['role:admin']);
     Route::resource('/events/{event_id}/guests', GuestController::class);
+    Route::get('/events/{event_id}/guests.xlsx', [GuestController::class, 'export'])->name('guests.export');
 })->middleware('auth');
 
 Auth::routes(['register' => false]);
