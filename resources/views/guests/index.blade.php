@@ -5,7 +5,10 @@
         <div style="margin-bottom: 10px;" class="row">
             <div class="col-lg-12">
                 <a class="btn btn-success" href="{{ route('guests.create', $event->id) }}">
-                    Create guest
+                    Add new guest
+                </a>
+                <a class="btn btn-info" href="{{ route('guests.live', $event->id) }}" target="_blank">
+                    Live Updating
                 </a>
             </div>
         </div>

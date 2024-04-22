@@ -7,8 +7,25 @@ use App\Http\Requests\UpdateGuestRequest;
 use App\Models\Event;
 use App\Models\Guest;
 
+use App\Events\GuestRegisterEvent;
+
 class GuestController extends Controller
 {
+
+    /**
+     * Pusher Real Time Update
+     */
+    public function live(int $event_id)
+    {
+        //
+        $event = Event::where('id', $event_id)->first();
+        $guests = Guest::where('event_id', $event_id)->orderBy('id', 'DESC')->limit(10)->get();
+
+        $guestCount = Guest::where('event_id', $event_id)->get()->count();
+
+        return view('guests.pusher-live', ['guests' => $guests, 'event' => $event, 'guestCount' => $guestCount]);
+    }
+
     /**
      * Display a listing of the resource.
      */
@@ -27,7 +44,7 @@ class GuestController extends Controller
     {
         $event = Event::where('id', $event_id)->first();
 
-        return view('guests.create', ['event' => $event]);
+        return view('guests.pusher-create', ['event' => $event]);
     }
 
     /**
@@ -38,7 +55,12 @@ class GuestController extends Controller
 
         Guest::create(array_merge($request->validated(), ['event_id' => $event_id]));
 
-        return redirect()->route('guests.index', $event_id);
+        // return redirect()->route('guests.index', $event_id);
+
+        $guest = array_merge($request->all(), ['event_id' => $event_id]);
+        event(new GuestRegisterEvent($guest));
+        
+        return response()->json(['message' => 'Guest has been created successfully.']);
     }
 
     /**

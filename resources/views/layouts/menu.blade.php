@@ -1,7 +1,14 @@
-<li class="nav-item">
-    <a href="{{ route('home') }}" class="nav-link {{ Request::is('admin/home') ? 'active' : '' }}">
+{{-- <li class="nav-item">
+    <a href="{{ route('admin.home') }}" class="nav-link {{ Request::is('admin/home') ? 'active' : '' }}">
         <i class="fas fa-house-user"></i>
         <p>Home</p>
+    </a>
+</li> --}}
+
+<li class="nav-item">
+    <a href="{{ route('dashboard') }}" class="nav-link {{ Request::is('admin/dashboard') ? 'active' : '' }}">
+        <i class="fas fa-house-user"></i>
+        <p>Dashboard</p>
     </a>
 </li>
 
