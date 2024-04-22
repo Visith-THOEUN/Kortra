@@ -58,6 +58,62 @@
             }
         }
 
+        .circle {
+            position: absolute;
+            width: 20px;
+            height: 20px;
+
+            &:before {
+                content: "";
+                position: relative;
+                display: block;
+                width: 250%;
+                height: 250%;
+                box-sizing: border-box;
+                margin-left: -75%;
+                margin-top: -75%;
+                border-radius: 45px;
+                background-color: red;
+                animation: pulse 1.25s cubic-bezier(0.215, 0.61, 0.355, 1) infinite;
+            }
+
+            &:after {
+                content: "";
+                position: absolute;
+                left: 0;
+                top: 0;
+                display: block;
+                width: 100%;
+                height: 100%;
+                background-color: red;
+                border-radius: 50px;
+                animation: circle 1.25s cubic-bezier(0.455, 0.03, 0.515, 0.955) -0.4s infinite;
+            }
+            }
+
+            @keyframes pulse {
+                0% {
+                    transform: scale(0.33);
+                }
+                80%,
+                100% {
+                    opacity: 0;
+                }
+            }
+
+            @keyframes circle {
+                0% {
+                    transform: scale(0.8);
+                }
+                50% {
+                    transform: scale(1);
+                }
+                100% {
+                    transform: scale(0.8);
+                }
+            }
+
+
     </style>
 
 </head>
@@ -69,8 +125,9 @@
         <div class="navbar navbar-dark bg-dark shadow-sm">
             <div class="container">
                 <a href="#" class="navbar-brand d-flex align-items-center">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" aria-hidden="true" class="me-2" viewBox="0 0 24 24"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/><circle cx="12" cy="13" r="4"/></svg>
-                    <span>Live Updating...</span>
+                    {{-- <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" aria-hidden="true" class="me-2" viewBox="0 0 24 24"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/><circle cx="12" cy="13" r="4"/></svg> --}}
+                    <div class="circle"></div>
+                    <span style="padding-left: 1.5em">Live Updating...</span>
                 </a>
                 <div class="d-grid gap-2 d-sm-flex justify-content-sm-center">
                     <a href={{ route('guests.index', $event->id) }} type="button" class="btn btn-primary btn-sm px-4 gap-3">Go Back</a>
