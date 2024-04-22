@@ -113,6 +113,85 @@
                 }
             }
 
+        /* Text loading */
+        .text-container {
+            height: 100vh;
+            background: #773d8c; 
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            }
+
+        .loading {
+            display: flex;
+            flex-direction: row;
+        }
+        .loading__letter {
+            font-size: 24px;
+            font-weight: normal;
+            letter-spacing: 4px;
+            text-transform: uppercase;
+            font-family: "Audiowide";
+            color: #fff;
+            animation-name: bounce;
+            animation-duration: 2s;
+            animation-iteration-count: infinite;
+        }
+
+        .loading__letter:nth-child(2) {
+            animation-delay: .1s;	
+        }
+        .loading__letter:nth-child(3) {
+            animation-delay: .2s;
+        }
+        .loading__letter:nth-child(4) {
+            animation-delay: .3s;	
+        }
+        .loading__letter:nth-child(5) {
+            animation-delay: .4s;
+        }
+        .loading__letter:nth-child(6) {
+            animation-delay: .5s;	
+        }
+        .loading__letter:nth-child(7) {
+            animation-delay: .6s;
+        }
+        .loading__letter:nth-child(8) {
+            animation-delay: .8s;
+        }
+        .loading__letter:nth-child(9) {
+            animation-delay: 1s;
+        }
+        .loading__letter:nth-child(10) {
+            animation-delay: 1.2s;
+        }
+
+        @keyframes bounce {
+            0% {
+                transform: translateY(0px)
+            }
+            40% {
+                transform: translateY(-40px);
+            }
+            80%,
+            100% {
+                transform: translateY(0px);
+            }
+        }
+
+
+        @media (max-width: 700px) {
+            .loading__letter {
+                font-size: 50px;
+            }
+        }
+
+        @media (max-width: 340px) {
+            .loading__letter {
+                font-size: 40px;
+            }
+        }
+
 
     </style>
 
@@ -127,7 +206,18 @@
                 <a href="#" class="navbar-brand d-flex align-items-center">
                     {{-- <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" aria-hidden="true" class="me-2" viewBox="0 0 24 24"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/><circle cx="12" cy="13" r="4"/></svg> --}}
                     <div class="circle"></div>
-                    <span style="padding-left: 1.5em">Live Updating...</span>
+                    {{-- <span >Live Updating...</span> --}}
+                    <div class="text-loading" style="padding-left: 1.5em">
+                        <div class="loading">
+                          <div class="loading__letter">L</div>
+                          <div class="loading__letter">i</div>
+                          <div class="loading__letter">v</div>
+                          <div class="loading__letter">e</div>
+                          <div class="loading__letter">.</div>
+                          <div class="loading__letter">.</div>
+                          <div class="loading__letter">.</div>
+                        </div>
+                    </div>
                 </a>
                 <div class="d-grid gap-2 d-sm-flex justify-content-sm-center">
                     <a href={{ route('guests.index', $event->id) }} type="button" class="btn btn-primary btn-sm px-4 gap-3">Go Back</a>
