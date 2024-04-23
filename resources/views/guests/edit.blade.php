@@ -8,9 +8,8 @@
             </p>
             Edit guest
         </div>
-
-        <div class="card-body">
-            <form action="{{ route('guests.update', [$event->id, $guest->id]) }}" method="POST" enctype="multipart/form-data">
+        <div class="container">
+            <form action="{{ route('guests.update', [$event->id, $guest->id]) }}" method="POST" enctype="multipart/form-data">  
                 @csrf
                 @method('PUT')
                 <div class="row">
@@ -103,5 +102,38 @@
                 </div>
             </form>
         </div>
+        <div class="container">
+            <div class="form-group {{ $errors->has('currency') ? 'has-error' : '' }}">
+                <label for="currency">Currency</label></br>
+                <input type="checkbox" name="currency" id="currency" value="USD">
+                <label for="currency">USD</label></br>
+                <input type="checkbox" name="currency" id="currency" value="KHR">
+                <label for="currency">KHR</label></br>
+
+                    
+                @if ($errors->has('currency'))
+                    <p class="help-block">
+                        {{ $errors->first('currency') }}
+                    </p>
+                @endif
+            
+            </div>
+            <div class="form-group {{ $errors->has('payment_method') ? 'has-error' : '' }}">
+                <label for="payment_method">Payment method</label></br>
+                <input type="checkbox" name="payment_method" id="payment_method" value="Cash">
+                <label for="payment_method">Cash</label></br>
+                <input type="checkbox" name="payment_method" id="payment_method" value="Bank">
+                <label for="payment_method">Bank</label>
+
+                @if ($errors->has('payment_method'))
+                    <p class="help-block">
+                        {{ $errors->first('payment_method') }}
+                    </p>
+                @endif
+            </div>
+            <div>
+                <input class="btn btn-primary" type="submit" value="Save">
+            </div>
+        </form>
     </div>
 @endsection

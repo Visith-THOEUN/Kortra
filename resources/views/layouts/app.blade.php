@@ -10,6 +10,9 @@
                         <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i
                                 class="fas fa-bars"></i></a>
                     </li>
+                    <li class="nav-item">
+                        <a class="btn btn-small btn-info"  href={{ route('home') }} target="_blank">Home</a>
+                    </li>
                 </ul>
 
                 <ul class="navbar-nav ml-auto">
