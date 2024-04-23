@@ -127,7 +127,7 @@
             flex-direction: row;
         }
         .loading__letter {
-            font-size: 24px;
+            font-size: 24px !important;
             font-weight: normal;
             letter-spacing: 4px;
             text-transform: uppercase;
