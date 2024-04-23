@@ -55,12 +55,14 @@ class GuestController extends Controller
 
         Guest::create(array_merge($request->validated(), ['event_id' => $event_id]));
 
-        // return redirect()->route('guests.index', $event_id);
-
-        $guest = array_merge($request->all(), ['event_id' => $event_id]);
+        $guest = array_merge($request->validated(), ['event_id' => $event_id]);
         event(new GuestRegisterEvent($guest));
+
+        return redirect()->route('guests.index', $event_id);
+
+       
         
-        return response()->json(['message' => 'Guest has been created successfully.']);
+    //    return response()->json(['message' => 'Guest has been created successfully.']);
     }
 
     /**
