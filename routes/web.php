@@ -3,8 +3,9 @@
 use App\Http\Controllers\EventController;
 use App\Http\Controllers\GroupController;
 use App\Http\Controllers\GuestController;
-use App\Http\Controllers\GuestRealTimeController;
+// use App\Http\Controllers\GuestRealTimeController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\HomeController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -24,16 +25,14 @@ Route::get('/', function () {
 
 Route::middleware('auth')->prefix('admin')->group(function () {
     // Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('admin.home');
-    Route::get('/dashboard', function () {
-        return view('dashboard');
-    })->name('dashboard');
+    Route::get('/dashboard', [HomeController::class, 'dashboard'])->name('dashboard');
     Route::resource('/events', EventController::class);
     Route::resource('/users', UserController::class)->middleware(['role:admin']);
     Route::resource('groups', GroupController::class)->middleware(['role:admin']);
     Route::resource('/events/{event_id}/guests', GuestController::class);
     Route::get('/events/{event_id}/guests.xlsx', [GuestController::class, 'export'])->name('guests.export');
     Route::get('/events/{event_id}/guests-live', [GuestController::class, 'live'])->name('guests.live');
-    Route::resource('/events/{event_id}/guests-realtime', GuestRealTimeController::class);
+    // Route::resource('/events/{event_id}/guests-realtime', GuestRealTimeController::class);
 })->middleware('auth');
 
 Auth::routes(['register' => true]);
