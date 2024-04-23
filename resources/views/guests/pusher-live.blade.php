@@ -231,7 +231,7 @@
 
         <div class="px-4 py-4 text-center bg-primary text-light">
             <img class="d-block mx-auto mb-4" src={{ asset('assets/img/logo.png')}} alt="" width="100" height="100">
-            <h1 class="display-5 fw-bold">{{ $event->name  }} on {{ $event->event_date }}</h1>
+            <h1 class="display-5 fw-bold">{{ $event->name  }} នៅ {{ $event->event_date }}</h1>
             <div class="col-lg-6 mx-auto">
                 <p class="lead">ចំនួនភ្ងៀវដែលចូលរួមពិធីរៀបអាពាហ៍ពិពាហ៍របស់លោកអ្នក</p>
                 <span><span id="guestCount" class="display-4 fw-bold">{{ $guestCount }}</span> នាក់</span>
@@ -255,7 +255,7 @@
                                         <span>ចងដៃចំនួន <span class="text-info">{{$guest->amount}}@if($guest->currency == "USD")$@else៛@endif
                                             </span>, តាមរយៈ​: <span class="text-info">{{ $guest->payment_method}}</span> </span>
                                     </div>
-                                    <span class="d-block">អសយដ្ឋាន: {{ $guest->address }}
+                                    <span class="d-block">អាសយដ្ឋាន: {{ $guest->address }}
                                     </span>
                                 </div>
                             </div>
