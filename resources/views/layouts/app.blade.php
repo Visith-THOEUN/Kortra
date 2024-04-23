@@ -11,7 +11,7 @@
                                 class="fas fa-bars"></i></a>
                     </li>
                     <li class="nav-item">
-                        <a class="btn btn-small btn-info"  href={{ route('home') }} target="_blank">Home</a>
+                        <a class="btn btn-small btn-info"  href={{ route('dashboard') }}>Home</a>
                     </li>
                 </ul>
 
