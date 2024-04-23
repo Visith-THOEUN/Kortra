@@ -47,7 +47,7 @@ class GuestController extends Controller
     {
         $event = Event::where('id', $event_id)->first();
 
-        return view('guests.pusher-create', ['event' => $event]);
+        return view('guests.create', ['event' => $event]);
     }
 
     /**
