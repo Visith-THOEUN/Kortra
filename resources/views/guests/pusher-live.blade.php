@@ -233,7 +233,7 @@
             <img class="d-block mx-auto mb-4" src={{ asset('assets/img/logo.png')}} alt="" width="100" height="100">
             <h1 class="display-5 fw-bold">{{ $event->name  }} នៅ {{ $event->event_date }}</h1>
             <div class="col-lg-6 mx-auto">
-                <p class="lead">ចំនួនភ្ងៀវដែលចូលរួមពិធីរៀបអាពាហ៍ពិពាហ៍របស់លោកអ្នក</p>
+                <p class="lead">ចំនួនភ្ងៀវចូលរួម</p>
                 <span><span id="guestCount" class="display-4 fw-bold">{{ $guestCount }}</span> នាក់</span>
             </div>
         </div>
