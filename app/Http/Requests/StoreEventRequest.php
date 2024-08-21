@@ -29,7 +29,7 @@ class StoreEventRequest extends FormRequest
             'name' => ['required'],
             'detail' => ['required'],
             'group_id' => ['required'],
-            'event_date' => ['required'],
+            'event_date' => ['required', 'date', 'after_or_equal:today'],
         ];
     }
 }

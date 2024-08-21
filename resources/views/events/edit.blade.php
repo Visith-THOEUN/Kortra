@@ -9,47 +9,39 @@
             <form action="{{ route('events.update', [$event->id]) }}" method="POST" enctype="multipart/form-data">
                 @csrf
                 @method('PUT')
-                <div class="form-group {{ $errors->has('name') ? 'has-error' : '' }}">
+                <div class="form-group">
                     <label for="name">Event Name *</label>
-                    <input type="text" id="name" name="name" class="form-control"
-                           value="{{ old('name', isset($event) ? $event->name : '') }}" required>
+                    <input type="text" id="name" name="name" class="form-control {{ $errors->has('name') ? 'is-invalid' : '' }}" value="{{ old('name', isset($event) ? $event->name : '') }}" required>
                     @if ($errors->has('name'))
-                        <p class="help-block">
+                        <small class="form-text text-muted">
                             {{ $errors->first('name') }}
-                        </p>
+                        </small>
                     @endif
-                    <p class="helper-block">
-                        Event name
-                    </p>
                 </div>
 
-                <div class="form-group {{ $errors->has('detail') ? 'has-error' : '' }}">
+                <div class="form-group">
                     <label for="detail">Event detail</label>
-                    <input type="text" name="detail" id="detail" class="form-control" value="{{ old('detail', isset($event) ? $event->detail : '' ) }}" required>
+                    <input type="text" name="detail" id="detail" class="form-control {{ $errors->has('detail') ? 'is-invalid' : '' }}" value="{{ old('detail', isset($event) ? $event->detail : '' ) }}" required>
                     @if ($errors->has('detail'))
-                        <p class="help-block">
+                        <small class="form-text text-muted">
                             {{ $errors->first('detail') }}
-                        </p>
+                        </small>
                     @endif
-                    <p class="helper-block">
-                        Event detail
-                    </p>
                 </div>
 
-                <div class="form-group {{ $errors->has('event_date') ? 'has-error' : '' }}">
+                <div class="form-group">
                     <label for="event_date">Event date</label>
-                    <input type="date" name="event_date" id="event_date" class="form-control" value="{{ old('event_date', isset($event) ? $event->event_date: '') }}", required>
+                    <input type="date" name="event_date" id="event_date" class="form-control {{ $errors->has('event_date') ? 'is-invalid' : '' }}" value="{{ old('event_date', isset($event) ? $event->event_date: '') }}", required>
                     @if ($errors->has('event_date'))
-                        <p class="help-block">
+                        <small class="form-text text-muted">
                             {{ $errors->first('event_date') }}
-                        </p>
+                        </small>
                     @endif
-                    <p class="helper-block">Event date</p>
                 </div>
 
-                <div class="form-group {{ $errors->has('group_id') ? 'has-error' : '' }}">
+                <div class="form-group">
                     <label for="group">Group</label>
-                    <select name="group_id" id="group" class="form-control select2">
+                    <select name="group_id" id="group" class="form-control select2 {{ $errors->has('group_id') ? 'is-invalid' : '' }}">
                         @foreach ($groups as $id => $group)
                             <option value="{{ $id }}"
                                 {{ (isset($event) && $event->group ? $event->group->id : old('group_id')) == $id ? 'selected' : '' }}>
@@ -58,9 +50,9 @@
                         @endforeach
                     </select>
                     @if ($errors->has('group_id'))
-                        <p class="help-block">
+                        <small class="form-text text-muted">
                             {{ $errors->first('group_id') }}
-                        </p>
+                        </small>
                     @endif
                 </div>
                 <div>
