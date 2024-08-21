@@ -2,19 +2,17 @@
 
 namespace App\Http\Controllers;
 
+use App\Events\GuestRegisterEvent;
 use App\Exports\GuestsExport;
 use App\Http\Requests\StoreGuestRequest;
 use App\Http\Requests\UpdateGuestRequest;
 use App\Models\Event;
 use App\Models\Guest;
+// TODO: add authorization to prevent direct access
 use Maatwebsite\Excel\Facades\Excel;
-
-# TODO: add authorization to prevent direct access
-use App\Events\GuestRegisterEvent;
 
 class GuestController extends Controller
 {
-
     /**
      * Pusher Real Time Update
      */
@@ -55,7 +53,6 @@ class GuestController extends Controller
      */
     public function store(StoreGuestRequest $request, int $event_id)
     {
-
         Guest::create(array_merge($request->validated(), ['event_id' => $event_id]));
 
         $guest = array_merge($request->validated(), ['event_id' => $event_id]);
@@ -63,9 +60,7 @@ class GuestController extends Controller
 
         return redirect()->route('guests.index', $event_id);
 
-       
-        
-    //    return response()->json(['message' => 'Guest has been created successfully.']);
+        //    return response()->json(['message' => 'Guest has been created successfully.']);
     }
 
     /**
@@ -85,6 +80,7 @@ class GuestController extends Controller
     {
         $guest = Guest::where('id', $id)->where('event_id', $event_id)->first();
         $event = Event::where('id', $event_id)->first();
+
         return view('guests.edit', ['guest' => $guest, 'event' => $event]);
     }
 

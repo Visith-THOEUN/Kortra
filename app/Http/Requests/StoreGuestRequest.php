@@ -2,8 +2,10 @@
 
 namespace App\Http\Requests;
 
+use App\Enums\PaymentMethod;
 use Gate;
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Validation\Rule;
 use Symfony\Component\HttpFoundation\Response;
 
 class StoreGuestRequest extends FormRequest
@@ -28,9 +30,9 @@ class StoreGuestRequest extends FormRequest
         return [
             'fullname' => ['required'],
             'address' => ['required'],
-            'amount' => ['sometimes', 'nullable'],
-            'currency' => ['sometimes', 'nullable'],
-            'payment_method' => ['sometimes', 'nullable'],
+            'amount_kh' => ['sometimes', 'integer', 'nullable'],
+            'amount_usd' => ['sometimes', 'integer', 'nullable'],
+            'payment_method' => ['sometimes', 'nullable', Rule::enum(PaymentMethod::class)],
         ];
     }
 }

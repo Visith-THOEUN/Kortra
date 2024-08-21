@@ -9,7 +9,7 @@
             Edit guest
         </div>
         <div class="card-body">
-            <form action="{{ route('guests.update', [$event->id, $guest->id]) }}" method="POST" enctype="multipart/form-data">  
+            <form action="{{ route('guests.update', [$event->id, $guest->id]) }}" method="POST" enctype="multipart/form-data">
                 @csrf
                 @method('PUT')
                 <div class="row">
@@ -19,9 +19,9 @@
                             <input type="text" id="fullname" name="fullname" class="form-control"
                                    value="{{ old('fullname', isset($guest) ? $guest->fullname : '') }}" required>
                             @if ($errors->has('fullname'))
-                                <p class="help-block">
+                                <small class="form-text text-muted">
                                     {{ $errors->first('fullname') }}
-                                </p>
+                                </small>
                             @endif
                         </div>
                     </div>
@@ -31,21 +31,9 @@
                             <input type="text" id="address" name="address" class="form-control"
                                    value="{{ old('address', isset($guest) ? $guest->address : '') }}" required>
                             @if ($errors->has('address'))
-                                <p class="help-block">
+                                <small class="form-text text-muted">
                                     {{ $errors->first('address') }}
-                                </p>
-                            @endif
-                        </div>
-                    </div>
-                    <div class="col-sm">
-                        <div class="form-group {{ $errors->has('amount') ? 'has-error' : '' }}">
-                            <label for="address">Amount</label>
-                            <input type="number" id="amount" name="amount" class="form-control"
-                                   value="{{ old('amount', isset($guest) ? $guest->amount : '') }}">
-                            @if ($errors->has('amount'))
-                                <p class="help-block">
-                                    {{ $errors->first('amount') }}
-                                </p>
+                                </small>
                             @endif
                         </div>
                     </div>
@@ -53,40 +41,45 @@
 
                 <div class="row">
                     <div class="col-sm">
-                        <div class="form-group {{ $errors->has('currency') ? 'has-error' : '' }}">
-                            <legend class="col-form-label">Currency</legend>
-                            <div class="form-check">
-                                <input type="radio" name="currency" value="USD" id="currencyUSD" class="form-check-input" {{ isset($guest) && $guest->currency == 'USD' ? 'checked': '' }}>
-                                <label for="currencyUSD" class="form-check-label">USD</label>
-                            </div>
-                            <div class="form-check">
-                                <input type="radio" name="currency" value="KHR" id="currencyKHR" class="form-check-input" {{ isset($guest) && $guest->currency == 'KHR' ? 'checked': '' }}>
-                                <label for="currencyKHR" class="form-check-label">KHR</label>
-                            </div>
-
-                            @if ($errors->has('currency'))
-                                <p class="help-block">
-                                    {{ $errors->first('currency') }}
-                                </p>
+                        <div class="form-group {{ $errors->has('amount_kh') ? 'has-error' : '' }}">
+                            <label for="amount_kh">Amount in KHR</label>
+                            <input type="number" id="amount_kh" name="amount_kh" class="form-control"
+                                   value="{{ old('amount', isset($guest) ? $guest->amount_kh : '') }}">
+                            @if ($errors->has('amount_kh'))
+                                <small class="form-text text-muted">
+                                    {{ $errors->first('amount_kh') }}
+                                </small>
                             @endif
-
                         </div>
                     </div>
                     <div class="col-sm">
-                        <div class="form-group {{ $errors->has('payment_method') ? 'has-error' : '' }}">
-                            <legend class="col-form-label">Payment method</legend>
-                            <div class="form-check">
-                                <input type="radio" name="payment_method" value="CASH" id="paymentCASH" class="form-check-input" {{ isset($guest) && $guest->payment_method == 'CASH' ? 'checked': '' }}>
-                                <label for="paymentCASH" class="form-check-label">Cash</label>
-                            </div>
-                            <div class="form-check">
-                                <input type="radio" name="payment_method" value="BANK" id="paymentBANK" class="form-check-input" {{ isset($guest) && $guest->payment_method == 'BANK' ? 'checked': '' }}>
-                                <label for="paymentBANK" class="form-check-label">Bank</label>
-                            </div>
+                        <div class="form-group {{ $errors->has('amount_usd') ? 'has-error' : '' }}">
+                            <label for="amount_usd">Amount in USD</label>
+                            <input type="number" id="amount_usd" name="amount_usd" class="form-control"
+                                   value="{{ old('amount_usd', isset($guest) ? $guest->amount_usd : '') }}">
+                            @if ($errors->has('amount_usd'))
+                                <small class="form-text text-mute">
+                                    {{ $errors->first('amount_usd') }}
+                                </small>
+                            @endif
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-sm">
+                        <div class="form-group {{ $errors->has('payment_method') ? 'is-invalid' : '' }}">
+                            <label class="col-form-label">Payment method</label>
+                            @foreach(App\Enums\PaymentMethod::cases() as $paymentMethod)
+                                <div class="form-check">
+                                    <input type="radio" name="payment_method" id="payment_{{$paymentMethod->value}}" value="{{$paymentMethod->value}}" class="form-check-input" {{ isset($guest) && $guest->payment_method == $paymentMethod->value ? 'checked': '' }}>
+                                    <label for="payment_{{$paymentMethod->value}}" class="form-check-label">{{$paymentMethod->value}}</label>
+                                </div>
+                            @endforeach
                             @if ($errors->has('payment_method'))
-                                <p class="help-block">
+                                <small class="form-text text-muted">
                                     {{ $errors->first('payment_method') }}
-                                </p>
+                                </small>
                             @endif
                         </div>
                     </div>

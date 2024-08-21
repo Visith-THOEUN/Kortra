@@ -12,16 +12,17 @@ class GuestsExport implements FromCollection, WithHeadings
     {
         $this->event_id = $event_id;
     }
+
     public function headings(): array
     {
-        return ['Guest name', 'Address', 'Amount', 'Currency', 'Payment method'];
+        return ['Guest name', 'Address', 'Amount in KHR', 'Amount in USD', 'Payment method'];
     }
 
     /**
-    * @return \Illuminate\Support\Collection
-    */
+     * @return \Illuminate\Support\Collection
+     */
     public function collection()
     {
-        return Guest::where('event_id', $this->event_id)->get(['fullname', 'address', 'amount', 'currency', 'payment_method']);
+        return Guest::where('event_id', $this->event_id)->get(['fullname', 'address', 'amount_kh', 'amount_usd', 'payment_method']);
     }
 }

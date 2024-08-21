@@ -39,10 +39,10 @@
                             Address
                         </th>
                         <th>
-                            Amount
+                            Amount in KHR
                         </th>
                         <th>
-                            Currency
+                            Amount in USD
                         </th>
                         <th>
                             Payment method
@@ -68,13 +68,13 @@
                                 {{ $guest->address ?? '' }}
                             </td>
                             <td>
-                                {{ $guest->amount }}
+                                {{ $guest->amount_kh ?? 0 }}
                             </td>
                             <td>
-                                {{ $guest->currency }}
+                                {{ $guest->amount_usd ?? 0 }}
                             </td>
                             <td>
-                                {{ $guest->payment_method }}
+                                {{ $guest->payment_method  }}
                             </td>
                             <td>
                                 @can('guest.show')
