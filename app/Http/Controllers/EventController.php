@@ -2,11 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Support\Facades\Gate;
 use App\Http\Requests\StoreEventRequest;
 use App\Http\Requests\UpdateEventRequest;
 use App\Models\Event;
 use App\Models\Group;
+use Illuminate\Support\Facades\Gate;
 use Symfony\Component\HttpFoundation\Response;
 
 class EventController extends Controller
@@ -18,10 +18,12 @@ class EventController extends Controller
     {
         if (auth()->user()->hasRole('admin')) {
             $events = Event::withCount('guests')->paginate(10);
+
             return view('events.index', ['events' => $events]);
         }
 
         $events = Event::where('group_id', auth()->user()->group_id)->withCount('guests')->paginate(10);
+
         return view('events.index', ['events' => $events]);
 
     }

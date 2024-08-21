@@ -14,8 +14,8 @@ class Guest extends Model
         'fullname',
         'address',
         'event_id',
-        'amount',
-        'currency',
+        'amount_kh',
+        'amount_usd',
         'payment_method',
     ];
 

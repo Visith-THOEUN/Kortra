@@ -2,7 +2,7 @@
 @extends('frontend.layouts.layout')
 
 @section('content')
-    
+
     @include('frontend.sections.slider')
 
     <div class="section" id="welcome">
@@ -11,7 +11,7 @@
 
                 <div class="pricing-header pb-md-4 mx-auto text-center">
                     <h1 class="display-4 fw-normal custom-heading">សូមស្វាគមន៍</h1>
-                    <p class="fs-5 text-muted">សូមស្វាគមន៍​មកកាន់ <span class="text-info">កម្មវិធីសប្បាយកត់</span> ដែលជាកម្មវិធីកត់ចំណងដៃឈានមុខគេ នៅក្នុងប្រទេសកម្ពុជា។ កម្មវិធីសប្បាយកត់ ជួយសម្រួល និងគ្រប់គ្រងចំណងដៃរបស់លោកអ្នក ប្រកបដោយប្រសិទ្ធភាព និងមានសុវត្ថិភាពខ្ពស់។</p>
+                    <p class="fs-5 text-muted">សូមស្វាគមន៍មកកាន់ <span class="text-info">កម្មវិធីសប្បាយកត់</span> ដែលជាកម្មវិធីកត់ចំណងដៃឈានមុខគេ នៅក្នុងប្រទេសកម្ពុជា។ កម្មវិធីសប្បាយកត់ ជួយសម្រួល និងគ្រប់គ្រងចំណងដៃរបស់លោកអ្នក ប្រកបដោយប្រសិទ្ធភាព និងមានសុវត្ថិភាពខ្ពស់។</p>
                 </div>
 
             </div><!-- /.row -->
@@ -66,5 +66,5 @@
             <p>&copy; រចនា និងអភិវឌ្ឍន៍កម្មវិធីដោយ &middot; <a href="#">គរុនិស្សិតព័ត៌មានវិទ្យា ក្រុម១</a></p>
         </footer>
     </div>
-    
+
 @endsection
