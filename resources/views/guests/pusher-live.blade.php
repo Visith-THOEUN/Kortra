@@ -20,7 +20,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.css">
 
     <link rel="canonical" href="https://getbootstrap.com/docs/5.0/examples/heroes/">
-    
+
     <style>
         * {
             box-sizing: border-box;
@@ -53,7 +53,7 @@
                 background-color: #198754;
                 color: #f8f9fa !important;
             }
-            100% { 
+            100% {
                 background-color: #fff;
             }
         }
@@ -116,7 +116,7 @@
         /* Text loading */
         .text-container {
             height: 100vh;
-            background: #773d8c; 
+            background: #773d8c;
             display: flex;
             justify-content: center;
             align-items: center;
@@ -139,19 +139,19 @@
         }
 
         .loading__letter:nth-child(2) {
-            animation-delay: .1s;	
+            animation-delay: .1s;
         }
         .loading__letter:nth-child(3) {
             animation-delay: .2s;
         }
         .loading__letter:nth-child(4) {
-            animation-delay: .3s;	
+            animation-delay: .3s;
         }
         .loading__letter:nth-child(5) {
             animation-delay: .4s;
         }
         .loading__letter:nth-child(6) {
-            animation-delay: .5s;	
+            animation-delay: .5s;
         }
         .loading__letter:nth-child(7) {
             animation-delay: .6s;
@@ -228,17 +228,35 @@
 
     <main>
         {{-- <h1 class="visually-hidden">Heroes examples</h1> --}}
+        <div class="container-fluid">
+            <div class="row bg-primary text-light">
+                <div class="col-2">
+                    <div class="py-4">
+                        @if($event->khqr_khr)
+                            <img src="{{ asset($event->khqr_khr) }}" alt="KHQR for KHR" class="img-fluid rounded float-left" width="400px">
+                        @endif
+                    </div>
+                </div>
 
-        <div class="px-4 py-4 text-center bg-primary text-light">
-            <img class="d-block mx-auto mb-4" src={{ asset('assets/img/logo.png')}} alt="" width="100" height="100">
-            <h1 class="display-5 fw-bold">{{ $event->name  }} នៅ {{ $event->event_date }}</h1>
-            <div class="col-lg-6 mx-auto">
-                <p class="lead">ចំនួនភ្ងៀវចូលរួម</p>
-                <span><span id="guestCount" class="display-4 fw-bold">{{ $guestCount }}</span> នាក់</span>
+                <div class="col-8">
+                    <div class="px-4 py-4 text-center">
+                        <img class="d-block mx-auto mb-4" src="{{ asset('assets/img/logo.png')}}" width="100" height="100" alt="Sabay kot logo">
+                        <h1 class="display-5 fw-bold">{{ $event->name  }} នៅ {{ $event->event_date }}</h1>
+                        <div class="col-lg-6 mx-auto">
+                            <p class="lead">ចំនួនភ្ងៀវចូលរួម</p>
+                            <span><span id="guestCount" class="display-4 fw-bold">{{ $guestCount }}</span> នាក់</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-2">
+                    <div class="py-4">
+                        @if($event->khqr_usd)
+                            <img src="{{ asset($event->khqr_usd) }}" alt="KHQR for USD" class="img-fluid rounded float-right" width="400px">
+                        @endif
+                    </div>
+                </div>
             </div>
-        </div>
-      
-        <div class="container">
             <div class="row px-4">
                 <div class="my-3 p-3 bg-body rounded shadow-sm" style="max-width: 920px; margin: auto">
                     <h6 class="border-bottom pb-2 mb-0">Recent updates</h6>
@@ -248,7 +266,7 @@
                         @foreach ($guests as $guest)
                             <div class="d-flex pt-3 border-bottom custom-card">
                                 <svg class="bd-placeholder-img flex-shrink-0 me-2 rounded" width="32" height="32" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: 32x32" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#007bff"/><text x="50%" y="50%" fill="#007bff" dy=".3em">32x32</text></svg>
-                                
+
                                 <div class="mb-0 small lh-sm w-100">
                                     <div class="d-flex justify-content-between">
                                         <strong class="text-gray-dark">{{ $guest->fullname }}</strong>
@@ -267,13 +285,13 @@
                         <a href={{ route('guests.index', $event->id) }} >View all</a>
                     </small>
                 </div>
-                
+
             </div>
         </div>
-        
+
 
     </main>
-    
+
 
     <script>
 
@@ -292,7 +310,7 @@
                 // alert(JSON.stringify(data));
 
                 if (data.guest.event_id == eventId) {
-                    
+
                     toastr.options = {
                         "closeButton": true,
                         "debug": false,
@@ -318,7 +336,7 @@
                     // newEl.appendChild(document.createTextNode("Some text"));
                     newEl.innerHTML = `
                             <svg class="bd-placeholder-img flex-shrink-0 me-2 rounded" width="32" height="32" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: 32x32" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#007bff"/><text x="50%" y="50%" fill="#007bff" dy=".3em">32x32</text></svg>
-                            
+
                             <div class="mb-0 small lh-sm w-100">
                                 <div class="d-flex justify-content-between">
                                     <strong class="text-gray-dark">${data.guest.fullname}</strong>
@@ -327,7 +345,7 @@
                                 </div>
                                 <span class="d-block">អសយដ្ឋាន: ${data.guest.address}</span>
                             </div>`;
-                    
+
                     El.prepend(newEl);
 
                     // lastId = lastId + 1;

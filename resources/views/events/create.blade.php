@@ -56,6 +56,25 @@
                     @endif
                 </div>
 
+                <div class="form-group">
+                    <label for="khqr_khr" class="form-label">KHR KHQR</label>
+                    <input type="file" name="khqr_khr" id="khqr_khr" class="form-control {{$errors->has('khqr_khr') ? 'is-invalid': ''}}" value="{{ old('khqr_khr', isset($event) ? $event->khqr_khr : '') }}">
+                    @if($errors->has('khqr_khr'))
+                        <small class="form-text text-muted">
+                            {{ $errors->first('khqr_khr') }}
+                        </small>
+                    @endif
+                </div>
+                <div class="form-group">
+                    <label for="khqr_usd" class="form-label">USD KHQR</label>
+                    <input type="file" name="khqr_usd" id="khqr_usd" class="form-control {{$errors->has('khqr_usd') ? 'is-invalid': ''}}" value="{{ old('khqr_usd', isset($event) ? $event->khqr_usd : '') }}">
+                    @if($errors->has('khqr_usd'))
+                        <small class="form-text text-muted">
+                            {{ $errors->first('khqr_usd') }}
+                        </small>
+                    @endif
+                </div>
+
                 <div>
                     <input class="btn btn-primary" type="submit" value="Save">
                 </div>
