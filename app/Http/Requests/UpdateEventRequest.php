@@ -4,6 +4,7 @@ namespace App\Http\Requests;
 
 use Gate;
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Validation\Rules\File;
 use Symfony\Component\HttpFoundation\Response;
 
 class UpdateEventRequest extends FormRequest
@@ -30,6 +31,8 @@ class UpdateEventRequest extends FormRequest
             'detail' => ['required'],
             'group_id' => ['required'],
             'event_date' => ['required'],
+            'khqr_khr' => ['nullable', File::types(['jpg', 'jpeg', 'png'])],
+            'khqr_usd' => ['nullable', File::types(['jpg', 'jpeg', 'png'])],
         ];
     }
 }

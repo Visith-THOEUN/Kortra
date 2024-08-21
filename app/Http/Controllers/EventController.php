@@ -44,7 +44,9 @@ class EventController extends Controller
      */
     public function store(StoreEventRequest $request)
     {
-        Event::create($request->all());
+        $khqr_khr_path = $request->file('khqr_khr')->store('images');
+        $khqr_usd_path = $request->file('khqr_usd')->store('images');
+        Event::create(array_merge($request->all(), ['khqr_khr' => $khqr_khr_path, 'khqr_usd' => $khqr_usd_path]));
 
         return redirect()->route('events.index');
     }
@@ -76,7 +78,10 @@ class EventController extends Controller
      */
     public function update(UpdateEventRequest $request, string $id)
     {
-        Event::where('id', $id)->update($request->validated());
+        $khqrs = array();
+        if($request->file('khqr_khr')) $khqrs['khqr_khr'] = $request->file('khqr_khr')->store('images');
+        if($request->file('khqr_usd')) $khqrs['khqr_usd'] = $request->file('khqr_usd')->store('images');
+        Event::where('id', $id)->update(array_merge($request->validated(), $khqrs));
 
         return redirect()->route('events.index');
     }
