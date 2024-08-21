@@ -11,7 +11,7 @@ class Event extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['name', 'detail', 'event_date', 'group_id'];
+    protected $fillable = ['name', 'detail', 'event_date', 'group_id', 'khqr_khr', 'khqr_usd'];
 
     public function group(): BelongsTo
     {
