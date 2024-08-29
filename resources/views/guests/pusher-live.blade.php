@@ -270,8 +270,7 @@
                                 <div class="mb-0 small lh-sm w-100">
                                     <div class="d-flex justify-content-between">
                                         <strong class="text-gray-dark">{{ $guest->fullname }}</strong>
-                                        <span>ចងដៃចំនួន <span class="text-info">{{$guest->amount}}@if($guest->currency == "USD")$@else៛@endif
-                                            </span>, តាមរយៈ​: <span class="text-info">{{ $guest->payment_method}}</span> </span>
+                                        <span>ចងដៃចំនួន <span class="text-info">{{$guest->amount_kh ?? 0}} ៛ និង</span>, តាមរយៈ​: <span class="text-info">{{ $guest->payment_method}}</span> </span>
                                     </div>
                                     <span class="d-block">អាសយដ្ឋាន: {{ $guest->address }}
                                     </span>
@@ -328,7 +327,7 @@
                         "showMethod": "fadeIn",
                         "hideMethod": "fadeOut"
                     }
-                    toastr["success"](`${data.guest.fullname} ចងដៃចំនួន ${data.guest.amount}$ ❤️`);
+                    toastr["success"](`${data.guest.fullname} ចងដៃចំនួន ${data.guest.amount_kh}$ ❤️`);
 
                     const El = document.getElementById("realTime");
                     const newEl = document.createElement("div");
@@ -340,7 +339,7 @@
                             <div class="mb-0 small lh-sm w-100">
                                 <div class="d-flex justify-content-between">
                                     <strong class="text-gray-dark">${data.guest.fullname}</strong>
-                                    <span>ចងដៃចំនួន <span class="text-info">${data.guest.amount}${data.guest.currency == "USD"? "$" : "៛"}
+                                    <span>ចងដៃចំនួន <span class="text-info">${data.guest.amount_kh}$ GG {data.guest.currency == "USD"? "$" : "៛"}
                                         </span>, តាមរយៈ​: <span class="text-info">${data.guest.payment_method}</span> </span>
                                 </div>
                                 <span class="d-block">អសយដ្ឋាន: ${data.guest.address}</span>
