@@ -41,25 +41,25 @@
 
                 <div class="row">
                     <div class="col-sm">
-                        <div class="form-group {{ $errors->has('amount_usd') ? 'has-error' : '' }}">
-                            <label for="amount_usd">Amount in KHR</label>
-                            <input type="number" id="amount_usd" name="amount_usd" class="form-control"
-                                   value="{{ old('amount_usd', isset($guest) ? $guest->amount_kh : '') }}"/>
-                            @if ($errors->has('amount_usd'))
-                                <small class="form-text text-muted">
-                                    {{ $errors->first('amount_usd') }}
-                                </small>
-                            @endif
-                        </div>
-                    </div>
-                    <div class="col-sm">
                         <div class="form-group {{ $errors->has('amount_kh') ? 'has-error' : '' }}">
-                            <label for="amount_kh">Amount in USD</label>
+                            <label for="amount_kh">Amount in KHR</label>
                             <input type="number" id="amount_kh" name="amount_kh" class="form-control"
                                    value="{{ old('amount_kh', isset($guest) ? $guest->amount_kh : '') }}"/>
                             @if ($errors->has('amount_kh'))
                                 <small class="form-text text-muted">
                                     {{ $errors->first('amount_kh') }}
+                                </small>
+                            @endif
+                        </div>
+                    </div>
+                    <div class="col-sm">
+                        <div class="form-group {{ $errors->has('amount_usd') ? 'has-error' : '' }}">
+                            <label for="amount_usd">Amount in USD</label>
+                            <input type="number" id="amount_usd" name="amount_usd" class="form-control"
+                                   value="{{ old('amount_usd', isset($guest) ? $guest->amount_usd : '') }}"/>
+                            @if ($errors->has('amount_usd'))
+                                <small class="form-text text-muted">
+                                    {{ $errors->first('amount_usd') }}
                                 </small>
                             @endif
                         </div>
